@@ -1,0 +1,57 @@
+﻿@model IEnumerable<MagisterWeb.Models.Aluno>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Curso.NomeCurso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalCredito)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataAniversario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MGP)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Curso.NomeCurso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalCredito)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataAniversario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MGP)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { matAlu = item.MatAluno }) |
+            @Html.ActionLink("Details", "Details", new { matAlu = item.MatAluno }) |
+            @Html.ActionLink("Delete", "Delete", new { matAlu = item.MatAluno })
+        </td>
+    </tr>
+}
+
+</table>

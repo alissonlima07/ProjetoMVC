@@ -1,0 +1,61 @@
+﻿@model MagisterWeb.Models.Disciplina
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Disciplina</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NomeDisc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomeDisc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Creditos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Creditos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TpoDisc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TpoDisc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Horas_Obrig)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Horas_Obrig)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LimitFaltas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LimitFaltas)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DiscPreReq)
+        </dt>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CodDisc }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

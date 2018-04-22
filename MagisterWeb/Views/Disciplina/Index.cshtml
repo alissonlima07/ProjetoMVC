@@ -1,0 +1,58 @@
+﻿@model IEnumerable<MagisterWeb.Models.Disciplina>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NomeDisc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Creditos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TpoDisc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Horas_Obrig)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LimitFaltas)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NomeDisc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Creditos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TpoDisc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Horas_Obrig)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LimitFaltas)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.CodDisc }) |
+            @Html.ActionLink("Details", "Details", new { id = item.CodDisc }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.CodDisc }) | 
+            @Html.ActionLink("Pré Requisito", "CreatePreReq", new { id = item.CodDisc })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,39 @@
+﻿@model IEnumerable<MagisterWeb.Models.PeriodoLetivo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DataIni)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataFim)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataIni)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataFim)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {ano = item.Ano, semestre = item.Semestre }) |
+            @Html.ActionLink("Details", "Details", new { ano = item.Ano, semestre = item.Semestre }) |
+            @Html.ActionLink("Delete", "Delete", new { ano = item.Ano, semestre = item.Semestre })
+        </td>
+    </tr>
+}
+
+</table>

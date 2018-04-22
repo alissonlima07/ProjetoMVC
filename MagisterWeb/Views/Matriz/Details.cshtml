@@ -1,0 +1,42 @@
+﻿@model MagisterWeb.Models.Matriz
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Matriz</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Curso.NomeCurso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Curso.NomeCurso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Disciplina.NomeDisc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Disciplina.NomeDisc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Periodo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Periodo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { codCurso = Model.CodCurso, codDisc = Model.CodDisciplina }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

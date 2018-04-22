@@ -1,0 +1,64 @@
+﻿@model MagisterWeb.Models.Disciplina
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Disciplina</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NomeDisc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomeDisc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Creditos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Creditos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TpoDisc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TpoDisc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Horas_Obrig)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Horas_Obrig)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LimitFaltas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LimitFaltas)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<MagisterWeb.Models.Curso>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Professor.NomProf)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NomeCurso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalCreditos)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Professor.NomProf)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NomeCurso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalCreditos)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CodCurso }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CodCurso }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CodCurso })
+        </td>
+    </tr>
+}
+
+</table>
