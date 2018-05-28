@@ -17,9 +17,30 @@ namespace MagisterWeb.Controllers
 
         // GET: Historico
         [Route("listar")]
-        public ActionResult Index()
+        public ActionResult Index(string ano, string semestre, string curso)
         {
-            var historicoes = db.Historicoes.Include(h => h.Aluno).Include(h => h.Disciplina).Include(h => h.PeriodoLetivo);
+            ViewBag.Ano = new SelectList(db.PeriodoLetivoes, "Ano", "Ano");
+            ViewBag.Semestre = new SelectList(db.PeriodoLetivoes, "Semestre", "Semestre");
+            ViewBag.Curso = new SelectList(db.Cursoes, "CodCurso", "NomeCurso");
+            var historicoes = db.Historicoes.Include(h => h.Aluno).Include(h => h.Disciplina).Include(h => h.PeriodoLetivo).Include(h => h.Aluno.Curso);
+
+            if (!String.IsNullOrEmpty(curso))
+            {
+                int CodCurso = Convert.ToInt32(curso);
+                historicoes = historicoes.Where(a => a.Aluno.CodCurso == CodCurso);
+            }
+
+            if (!String.IsNullOrEmpty(ano))
+            {
+                int Ano = Convert.ToInt32(ano);
+                historicoes = historicoes.Where(a => a.Ano == Ano);
+            }
+            if (!String.IsNullOrEmpty(semestre))
+            {
+                int Semestre = Convert.ToInt32(semestre);
+                historicoes = historicoes.Where(a => a.Semestre == Semestre);
+            }
+
             return View(historicoes.ToList());
         }
 
@@ -113,13 +134,13 @@ namespace MagisterWeb.Controllers
 
         // GET: Historico/Delete/5
         [Route("deletar", Order = 0)]
-        public ActionResult Delete(int? ano, int? semestre)
+        public ActionResult Delete(int? ano, int? semestre, int? matAluno, int? codDisc)
         {
             if (ano == null || semestre == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var historico = db.Historicoes.Where(Mat => Mat.Ano == ano && Mat.Semestre == semestre);
+            var historico = db.Historicoes.Where(Mat => Mat.Ano == ano && Mat.Semestre == semestre && Mat.MatriculaAluno == matAluno && Mat.CodDisciplina == codDisc);
             if (historico == null || historico.Count() == 0)
             {
                 return HttpNotFound();
@@ -131,9 +152,9 @@ namespace MagisterWeb.Controllers
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         [Route("deletar", Order = 1)]
-        public ActionResult DeleteConfirmed(int ano, int semestre)
+        public ActionResult DeleteConfirmed(int ano, int semestre, int matAluno, int codDisc)
         {
-            var historico = db.Historicoes.Where(hist => hist.Ano == ano && hist.Semestre == semestre);
+            var historico = db.Historicoes.Where(hist => hist.Ano == ano && hist.Semestre == semestre && hist.MatriculaAluno == matAluno && hist.CodDisciplina == codDisc);
             if (historico == null || historico.Count() == 0)
             {
                 return HttpNotFound();

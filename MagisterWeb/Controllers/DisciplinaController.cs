@@ -124,6 +124,7 @@ namespace MagisterWeb.Controllers
             return RedirectToAction("Index");
         }
 
+ 
         public ActionResult CreatePreReq(int? id)
         {
             if (id == null)
@@ -142,6 +143,7 @@ namespace MagisterWeb.Controllers
                                                 Value = x.CodDisc.ToString(),
                                                 Text = x.NomeDisc
                                             }).ToList();
+
 
             return View(disciplina);
             

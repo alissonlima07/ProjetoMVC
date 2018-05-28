@@ -52,5 +52,7 @@ namespace MagisterWeb.Models
         [Display(Name = "Faltas")]
         public int Faltas { get; set; }
 
+        public virtual Curso Curso { get; set; }
+
     }
 }

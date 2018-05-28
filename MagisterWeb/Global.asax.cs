@@ -19,7 +19,8 @@ namespace MagisterWeb
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            Database.SetInitializer<Context>(new DropCreateDatabaseIfModelChanges<Context>());
+            //Database.SetInitializer<Context>(new DropCreateDatabaseIfModelChanges<Context>());
+            Database.SetInitializer<Context>(new MagisterDataBaseInitializer());
         }
     }
 }

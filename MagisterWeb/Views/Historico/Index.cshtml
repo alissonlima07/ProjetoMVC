@@ -1,16 +1,41 @@
 ﻿@model IEnumerable<MagisterWeb.Models.Historico>
-
 @{
     ViewBag.Title = "Index";
 }
-
 <h2>Index</h2>
-
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Novo Historico", "Create")
 </p>
+<form method="get">
+    <div class="form-group">
+        @Html.Label("Ano", "Ano", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("Ano", null, "Selecione o Ano", htmlAttributes: new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.Label("Semestre", "Semestre", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("Semestre", null, "Selecione o Semestre", htmlAttributes: new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.Label("Curso", "Curso", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("Curso", null, "Selecione o Curso", htmlAttributes: new { @class = "form-control" })
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Filtrar</button>
+</form>
+<br />
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PeriodoLetivo.Ano)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PeriodoLetivo.Semestre)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Aluno.Nome)
         </th>
@@ -18,19 +43,28 @@
             @Html.DisplayNameFor(model => model.Disciplina.NomeDisc)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PeriodoLetivo.Ano)
+            @Html.DisplayNameFor(model => model.Aluno.Curso.NomeCurso)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Media)
+            @Html.DisplayNameFor(model => model.Disciplina.Turma.Professor.NomProf)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Faltas)
+            @Html.DisplayNameFor(model => model.Disciplina.Turma.Professor.MatProf)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Aluno.Curso.TotalCreditos)
         </th>
         <th></th>
     </tr>
-
-@foreach (var item in Model) {
+    @foreach (var item in Model)
+    {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PeriodoLetivo.Ano)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PeriodoLetivo.Semestre)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Aluno.Nome)
         </td>
@@ -38,20 +72,22 @@
             @Html.DisplayFor(modelItem => item.Disciplina.NomeDisc)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PeriodoLetivo.Ano)
+            @Html.DisplayFor(modelItem => item.Aluno.Curso.NomeCurso)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Media)
+            @Html.DisplayFor(modelItem => item.Aluno.Curso.Professor.NomProf)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Faltas)
+            @Html.DisplayFor(modelItem => item.Aluno.Curso.Professor.MatProf)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { ano = item.Ano, semestre = item.Semestre }) |
+            @Html.DisplayFor(modelItem => item.Aluno.Curso.TotalCreditos)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { ano = item.Ano, semestre = item.Semestre}) |
             @Html.ActionLink("Details", "Details", new { ano = item.Ano, semestre = item.Semestre }) |
-            @Html.ActionLink("Delete", "Delete", new { ano = item.Ano, semestre = item.Semestre })
+            @Html.ActionLink("Delete", "Delete", new { ano = item.Ano, semestre = item.Semestre, matAluno = item.MatriculaAluno, codDisc = item.CodDisciplina })
         </td>
     </tr>
-}
-
+    }
 </table>

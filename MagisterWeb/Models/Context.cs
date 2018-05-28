@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -6,18 +7,24 @@ using System.Web;
 
 namespace MagisterWeb.Models
 {
-    public class Context : DbContext
+    public class Context : IdentityDbContext<Usuario>
     {
-        // You can add custom code to this file. Changes will not be overwritten.
-        // 
-        // If you want Entity Framework to drop and regenerate your database
-        // automatically whenever you change your model schema, please use data migrations.
-        // For more information refer to the documentation:
-        // http://msdn.microsoft.com/en-us/data/jj591621.aspx
-    
         public Context() : base("name=Context")
+
         {
+            this.Configuration.ProxyCreationEnabled = false;
         }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+        }
+
+        public static Context Create()
+        {
+            return new Context();
+        }
+
 
         public System.Data.Entity.DbSet<MagisterWeb.Models.Aluno> Alunoes { get; set; }
 

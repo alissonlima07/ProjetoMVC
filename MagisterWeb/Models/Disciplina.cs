@@ -31,11 +31,11 @@ namespace MagisterWeb.Models
         [Required]
         [Column("TPO_DISC")]
         [Display(Name = "Tipo da Disciplina")]
-        public int TpoDisc { get; set; }
+        public char TpoDisc { get; set; }
 
         [Column("HORAS_OBRIG")]
         [Display(Name = "Horas Obrigatórias")]
-        public DateTime Horas_Obrig { get; set; }
+        public int Horas_Obrig { get; set; }
 
         [Column("LIMITE_FALTAS")]
         [Display(Name = "Limite de faltas")]

@@ -21,15 +21,23 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Alunos", "listar", "Alunos")</li>
-                    <li>@Html.ActionLink("Disciplinas", "listar", "Disciplinas")</li>
-                    <li>@Html.ActionLink("Historicos", "listar", "Historicos")</li>
-                    <li>@Html.ActionLink("Turmas", "listar", "Turmas")</li>
-                    <li>@Html.ActionLink("Cursos", "listar", "Cursos")</li>
-                    <li>@Html.ActionLink("Professores", "listar", "Professores")</li>
-                    <li>@Html.ActionLink("Matrizes", "listar", "Matrizes")</li>
-                    <li>@Html.ActionLink("Periodo Letivo", "listar", "periodos")</li>
-                    <li>@Html.ActionLink("Matriculas", "listar", "Matriculas")</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                            <li>@Html.ActionLink("Professores", "listar", "Professores")</li>
+                            <li>@Html.ActionLink("Cursos", "listar", "Cursos")</li>
+                            <li>@Html.ActionLink("Periodo Letivo", "listar", "periodos")</li>
+                            <li>@Html.ActionLink("Disciplinas", "listar", "Disciplinas")</li>
+                            <li>@Html.ActionLink("Turmas", "listar", "Turmas")</li>
+                            <li>@Html.ActionLink("Alunos", "listar", "Alunos")</li>
+                            <li>@Html.ActionLink("Historicos", "listar", "Historicos")</li>
+                            <li>@Html.ActionLink("Matrizes", "listar", "Matrizes")</li>
+                            <li>@Html.ActionLink("Matriculas", "listar", "matriculas")</li>
+                            <li>@Html.ActionLink("Notas e Faltas", "listar2", "matriculas")</li>
+                            <li>@Html.ActionLink("Consultas", "listar", "consultas")</li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
